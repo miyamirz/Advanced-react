@@ -10,10 +10,12 @@ export default ChildComponent => {
 			this.shouldNavigateAway();
 		}
 		shouldNavigateAway() {
-			this.prop.history.push('/');
+			if (!this.props.auth) {
+				this.props.history.push('/');
+			}
 		}
 		render() {
-			return <ChildComponent />;
+			return <ChildComponent {...this.props} />;
 		}
 	}
 
